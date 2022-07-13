@@ -8,8 +8,8 @@ import (
 
 type Subject struct {
 	gorm.Model
-	ID        uint `gorm:"primary_key:autoIncrement"`
-	Subject   string
+	ID        uint      `gorm:"primary_key:autoIncrement"`
+	Subject   string    `gorm:"not null;default:null"`
 	ClassID   uint      `gorm:"foreignKey"`
 	CreatedAt time.Time `gorm:"autoUpdate"`
 	UpdatedAt time.Time `gorm:"autoUpdate"`

@@ -9,7 +9,7 @@ import (
 type Complain struct {
 	gorm.Model
 	ID        uint   `gorm:"primary_key:autoIncrement"`
-	Complain  string `gorm:"not null"`
+	Complain  string `gorm:"not null;default:null"`
 	StudentID uint   `gorm:"foreignKey"`
 	Student   Student
 	CreatedAt time.Time `gorm:"autoUpdate"`

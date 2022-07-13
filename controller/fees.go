@@ -1,6 +1,7 @@
 package controller
 
 import (
+	"fmt"
 	"net/http"
 	"school/models"
 	"school/service"
@@ -12,14 +13,22 @@ import (
 func CreateFees(w http.ResponseWriter, r *http.Request) {
 	a, _ := strconv.Atoi(r.FormValue("studentID"))
 	b, _ := strconv.Atoi(r.FormValue("classID"))
+	d, _ := strconv.Atoi(r.FormValue("totalfees"))
+	c, _ := strconv.Atoi(r.FormValue("feespaid"))
+
+	fmt.Println(c)
+	fmt.Println(d)
+	e := d - c
+	fmt.Println(e)
 	service := service.NewFeeService()
 	fees, err := service.CreateFees(&models.Fees{
 		StudentID: uint(a),
 		ClassID:   uint(b),
 		Session:   r.FormValue("session"),
-		FeesPaid:  r.FormValue("feespaid"),
-		TotalFees: r.FormValue("totalfees"),
-		Pending:   r.FormValue("pending"),
+		FeesPaid:  uint(c),
+		TotalFees: uint(d),
+		Pending:   uint(e),
+		Month:     r.FormValue("month"),
 	})
 	if err != nil {
 		ApiResponse(w, &Res{
@@ -98,15 +107,17 @@ func UpdateFees(w http.ResponseWriter, r *http.Request) {
 	a, _ := strconv.Atoi(params["id"])
 	b, _ := strconv.Atoi(r.FormValue("studentID"))
 	c, _ := strconv.Atoi(r.FormValue("classID"))
+	d, _ := strconv.Atoi(r.FormValue("feespaid"))
+	e, _ := strconv.Atoi(r.FormValue("totalfees"))
 
 	fees, err := service.UpdateFees(&models.Fees{
 		ID:        uint(a),
 		StudentID: uint(b),
 		ClassID:   uint(c),
 		Session:   r.FormValue("session"),
-		FeesPaid:  r.FormValue("feespaid"),
-		TotalFees: r.FormValue("totalfees"),
-		Pending:   r.FormValue("pending"),
+		FeesPaid:  uint(d),
+		TotalFees: uint(e),
+		Pending:   uint(d - e),
 	})
 	if err != nil {
 		ApiResponse(w, &Res{

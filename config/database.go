@@ -34,6 +34,11 @@ func MigrateDB(db *gorm.DB) {
 		&models.ClassTeacher{},
 		&models.StudentClass{},
 		&models.StudentExam{},
+		&models.User{},
+		&models.Role{},
+		&models.ResetPassword{},
+		&models.User{},
+		&models.Login{},
 	)
 	if err != nil {
 		fmt.Println(err.Error())

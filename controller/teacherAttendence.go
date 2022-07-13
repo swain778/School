@@ -7,14 +7,26 @@ import (
 	"strconv"
 
 	"github.com/gorilla/mux"
+	"github.com/nleeper/goment"
 )
 
 func TeacherAttendence(w http.ResponseWriter, r *http.Request) {
 	a, _ := strconv.Atoi(r.FormValue("teacherID"))
 	service := service.NewTeacherAttendence()
+
+	att_date, err := goment.New(r.FormValue("date"), "YYYY-MM-DD")
+	if err != nil {
+		ApiResponse(w, &Res{
+			Code:    900,
+			Message: "Invalid date",
+			Data:    err.Error(),
+		})
+	}
+
 	teacherAttendence, err := service.CreateTeacherAttendence(&models.TeacherAttendence{
 		TeacherAttendence: r.FormValue("teacherattendence"),
 		TeacherID:         uint(a),
+		Date:              att_date.ToTime(),
 	})
 	if err != nil {
 		ApiResponse(w, &Res{

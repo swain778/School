@@ -23,6 +23,7 @@ func (a *StudentAttendence) CreateAttendence(attendence *models.StudentAttendenc
 	err := a.db.Where(&models.StudentAttendence{
 		StudentID:  attendence.StudentID,
 		Attendence: attendence.Attendence,
+		Date:       attendence.Date,
 	}).FirstOrCreate(&attendence).Error
 	if err != nil {
 		return nil, errors.New("can't create attendence")

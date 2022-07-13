@@ -25,6 +25,11 @@ func (f *FeesService) CreateFees(fees *models.Fees) (*models.Fees, error) {
 		Where(models.Fees{
 			ClassID:   fees.ClassID,
 			StudentID: fees.StudentID,
+			Session:   fees.Session,
+			FeesPaid:  fees.FeesPaid,
+			TotalFees: fees.TotalFees,
+			Pending:   fees.Pending,
+			Month:     fees.Month,
 		}).
 		FirstOrCreate(fees).Error
 

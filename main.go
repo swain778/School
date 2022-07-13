@@ -1,17 +1,16 @@
 package main
 
 import (
+	"context"
 	"log"
-	"net/http"
 	"os"
+	"school/app"
 	"school/config"
 	"school/pkg"
-
-	"github.com/gorilla/mux"
 )
 
 func main() {
-
+	pkg.RandomString()
 	if len(os.Args) > 1 {
 		switch os.Args[1] {
 		case "database":
@@ -23,15 +22,15 @@ func main() {
 		}
 
 	}
-
-	router := mux.NewRouter()
-	pkg.Routes(router)
-
-	err := http.ListenAndServe(":8000", router)
-	if err != nil {
-		log.Fatal(err)
-	} else {
-		log.Print("Server started at :8000")
+	type msg struct {
+		str string
 	}
+
+	ctx := context.Background()
+	ctx = context.WithValue(ctx, "msg", msg{str: "Hello from main...."})
+
+	container := app.InitContainer(ctx)
+	container.LoadRoutes()
+	container.HttpServe(ctx, "8000")
 
 }

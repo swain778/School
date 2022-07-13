@@ -23,6 +23,7 @@ func (t *TeacherAttendence) CreateTeacherAttendence(teacherAttendence *models.Te
 	err := t.db.Where(&models.TeacherAttendence{
 		TeacherID:         teacherAttendence.TeacherID,
 		TeacherAttendence: teacherAttendence.TeacherAttendence,
+		Date:              teacherAttendence.Date,
 	}).FirstOrCreate(&teacherAttendence).Error
 	if err != nil {
 		return nil, errors.New("can't create teacher attendence")

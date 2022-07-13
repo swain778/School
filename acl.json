@@ -1,0 +1,154 @@
+{
+    "admin":[
+        "/api/student/{id}",
+        "/api/student/{id}/delete",
+        "/api/student",
+        "/api/students",
+        "/api/student/{id}/update",
+
+        "/api/teacher",
+        "/api/teacher/{id}/delete",
+        "/api/teacher/{id}",
+        "/api/teacher",
+        "/api/teacher/{id}/update",
+
+        "/api/class",
+        "/api/class/{id}/delete",
+        "/api/class/{id}",
+        "/api/classes",
+        "/api/class/{id}/update",
+
+        "/api/complain",
+        "/api/complain/{id}/delete",
+        "/api/complain/{id}",
+        "/api/complains",
+        "/api/complain/{id}/update",
+
+        "/api/fees",
+        "/api/fees/{id}/delete",
+        "/api/fees/{id}",
+        "/api/feess",
+        "/api/fees/{id}/update",
+
+        "/api/exam",
+        "/api/exam/{id}/delete",
+        "/api/exam/{id}",
+        "/api/exams",
+        "/api/exam/{id}/update",
+
+        "/api/studentattendence",
+        "/api/studentattendence/{id}/delete",
+        "/api/studentattendence/{id}",
+        "/api/studentattendences",
+        "/api/studentattendence/{id}/update",
+
+        "/api/studentsession",
+        "/api/studentsession/{id}/delete",
+        "/api/studentsession/{id}",
+        "/api/studentsessions",
+        "/api/studentsession/{id}/update",
+
+        "/api/subject",
+        "/api/subject/{id}",
+        "/api/subject/{id}/delete",
+        "/api/subjects",
+        "/api/subject/{id}/update",
+
+        "/api/teacherattendence",
+        "/api/teacherattendence/{id}/delete",
+        "/api/teacherattendence/{id}",
+        "/api/teacherattendences",
+        "/api/teacherattendence/{id}/update",
+
+        "/api/classteacher",
+        "/api/classteacher/{id}/delete",
+        "/api/classteacher/{id}",
+        "/api/classteachers",
+        "/api/classteacher/{id}/update",
+
+        "/api/studentexam",
+        "/api/studentexam/{id}/delete",
+        "/api/studentexam/{id}",
+        "/api/studentexams",
+        "/api/studentexam/{id}/update",
+
+        "/api/studentclass",
+        "/api/studentclass/{id}/delete",
+        "/api/studentclass/{id}",
+        "/api/studentclasses",
+        "/api/studentclass/{id}/update"
+        
+
+    ],
+    "teacher":[
+        "/api/student/{id}",
+        "/api/student/{id}/delete",
+        "/api/student",
+        "/api/students",
+        "/api/student/{id}/update",
+
+
+        "/api/class",
+        "/api/class/{id}/delete",
+        "/api/class/{id}",
+        "/api/classes",
+        "/api/class/{id}/update",
+    
+        "/api/complain",
+        "/api/complain/{id}/delete",
+        "/api/complain/{id}",
+        "/api/complains",
+        "/api/complain/{id}/update",
+
+        "/api/exam",
+        "/api/exam/{id}/delete",
+        "/api/exam/{id}",
+        "/api/exams",
+        "/api/exam/{id}/update",
+
+        "/api/studentattendence",
+        "/api/studentattendence/{id}/delete",
+        "/api/studentattendence/{id}",
+        "/api/studentattendences",
+        "/api/studentattendence/{id}/update",
+
+        "/api/subject",
+        "/api/subject/{id}",
+        "/api/subjects",
+
+        "/api/teacherattendence",
+        "/api/teacherattendences",
+    
+        "/api/studentexam",
+        "/api/studentexam/{id}",
+        "/api/studentexams",
+
+
+        "/api/studentclass",
+        "/api/studentclass/{id}",
+        "/api/studentclasses",
+
+        "/api/forgotpassword",
+
+        "/api/reset_password/{resetKey}"
+
+
+    ],
+    "student":[
+        "/api/student/{id}",
+
+        "/api/studentattendence",
+        "/api/studentattendence/{id}/delete",
+        "/api/studentattendence/{id}",
+        "/api/studentattendences",
+        "/api/studentattendence/{id}/update",
+
+        "/api/subject",
+        "/api/subject/{id}",
+        "api/subjects",
+
+        "/api/forgotpassword",
+
+        "/api/reset_password/{resetKey}"
+    ]
+}

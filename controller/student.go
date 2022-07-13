@@ -1,18 +1,18 @@
 package controller
 
 import (
-	"fmt"
 	"net/http"
 	"school/models"
 	"school/service"
 	"strconv"
 
+	"github.com/go-chi/chi"
 	"github.com/gorilla/mux"
 )
 
 func AddStudent(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("Hello")
 	service := service.NewStudentService()
+
 	student, err := service.CreateStudent(&models.Student{
 		Name:        r.FormValue("name"),
 		Address:     r.FormValue("address"),
@@ -57,9 +57,21 @@ func GetsStudent(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetStudent(w http.ResponseWriter, r *http.Request) {
+
+	user := r.Context().Value("user").(*models.Login)
+
+	if user.Role.Role != string(models.AdminUser) && user.Role.Role != string(models.TeacherUser) {
+		ApiResponse(w, &Res{
+			Code:    900,
+			Message: "error",
+			Data:    "User Type " + user.Role.Role + " not allowed",
+		})
+		return
+	}
+
 	service := service.NewStudentService()
-	params := mux.Vars(r)
-	student, err := service.GetStudent(params["id"])
+
+	student, err := service.GetStudent(chi.URLParam(r, "id"))
 	if err != nil {
 		ApiResponse(w, &Res{
 			Code:    900,

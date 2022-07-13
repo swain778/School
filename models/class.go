@@ -9,7 +9,7 @@ import (
 type Class struct {
 	gorm.Model
 	ID           uint   `gorm:"primary_key:autoIncrement"`
-	Class        string `gorm:"unique:not null"`
+	Class        string `gorm:"unique:not null;default:null"`
 	ClassTeacher []ClassTeacher
 	Subject      []Subject
 	StudentClass []StudentClass
