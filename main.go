@@ -17,6 +17,10 @@ func main() {
 			config.MigrateDB(config.GetDB())
 			log.Print("\n Database loaded...")
 			os.Exit(1)
+		// case "dummy":
+		// 	config.DummyData(config.GetDB())
+		// 	log.Print("\n Dummy Data loaded...")
+		// 	os.Exit(1)
 		default:
 			log.Print("\n Starting server....")
 		}

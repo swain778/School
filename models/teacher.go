@@ -17,6 +17,7 @@ type Teacher struct {
 	Status            string `gorm:"not null;default:null"`
 	TeacherAttendence []TeacherAttendence
 	ClassTeacher      []ClassTeacher
+	Homework          []Homework
 	CreatedAt         time.Time `gorm:"autoUpdate"`
 	UpdatedAt         time.Time `gorm:"autoUpdate"`
 }

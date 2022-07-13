@@ -42,11 +42,11 @@
         "/api/studentattendences",
         "/api/studentattendence/{id}/update",
 
-        "/api/studentsession",
-        "/api/studentsession/{id}/delete",
-        "/api/studentsession/{id}",
-        "/api/studentsessions",
-        "/api/studentsession/{id}/update",
+        "/api/sessionyear",
+        "/api/sessionyear/{id}/delete",
+        "/api/sessionyear/{id}",
+        "/api/sessionyears",
+        "/api/sessionyear/{id}/update",
 
         "/api/subject",
         "/api/subject/{id}",
@@ -76,9 +76,18 @@
         "/api/studentclass/{id}/delete",
         "/api/studentclass/{id}",
         "/api/studentclasses",
-        "/api/studentclass/{id}/update"
-        
+        "/api/studentclass/{id}/update",
 
+        "/api/staff",
+        "/api/staff/{id}/delete",
+        "/api/staff/{staffType}",
+        "/api/staff/{staffType}/{id}",
+
+        "/api/BankDetail",
+        "/api/BankDetail/{id}/delete",
+
+        "/api/salary",
+        "/api/salary/{id}/delete"
     ],
     "teacher":[
         "/api/student/{id}",
@@ -130,7 +139,16 @@
 
         "/api/forgotpassword",
 
-        "/api/reset_password/{resetKey}"
+        "/api/reset_password/{resetKey}",
+
+        "/api/homework",
+        "/api/homework/{id}/delete",
+
+        "/api/studenthomework",
+        "/api/studenthomework/{id}/delete",
+
+        "/api/guardian",
+        "/api/guardian/{id}/delete"
 
 
     ],

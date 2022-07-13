@@ -14,12 +14,10 @@ func AddStudent(w http.ResponseWriter, r *http.Request) {
 	service := service.NewStudentService()
 
 	student, err := service.CreateStudent(&models.Student{
-		Name:        r.FormValue("name"),
-		Address:     r.FormValue("address"),
-		DOB:         r.FormValue("dob"),
-		Father_Name: r.FormValue("fathername"),
-		Mother_Name: r.FormValue("mothername"),
-		Status:      r.FormValue("status"),
+		Name:    r.FormValue("name"),
+		Address: r.FormValue("address"),
+		DOB:     r.FormValue("dob"),
+		Status:  r.FormValue("status"),
 	})
 
 	if err != nil {

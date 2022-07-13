@@ -16,7 +16,12 @@ import (
 func CreateUser(w http.ResponseWriter, r *http.Request) {
 
 	if r.FormValue("password") != r.FormValue("confirmPassword") {
-		errors.New("password did not matched")
+		ApiResponse(w, &Res{
+			Code:    900,
+			Message: "unable to log in",
+			Data:    errors.New("password did not matched"),
+		})
+		return
 	}
 
 	service := service.NewUserService()

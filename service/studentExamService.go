@@ -22,11 +22,11 @@ func NewStudentExamService() *StudentExamService {
 func (e *StudentExamService) SaveStudentExamInfo(exam *models.StudentExam) (*models.StudentExam, error) {
 	err := e.db.
 		Where(&models.StudentExam{
-			StudentID:        exam.StudentID,
-			ExamID:           exam.ExamID,
-			StudentSessionID: exam.StudentSessionID,
+			StudentID:     exam.StudentID,
+			ExamID:        exam.ExamID,
+			SessionYearID: exam.SessionYearID,
 		}).
-		FirstOrCreate(&models.StudentExam{}).Error
+		FirstOrCreate(&exam).Error
 	if err != nil {
 		return nil, errors.New("can't create exam")
 	}
@@ -66,4 +66,13 @@ func (e *StudentExamService) UpdateStudentExam(studentExam *models.StudentExam) 
 		return false, errors.New("can't update student exam")
 	}
 	return true, nil
+}
+
+func (e *StudentExamService) GetStudentExamByID(studentID string) (*[]models.StudentExam, error) {
+	exam := &[]models.StudentExam{}
+	err := e.db.Where("student_id=?", studentID).Preload(clause.Associations).Find(exam).Error
+	if err != nil {
+		return nil, errors.New("can't get student exam details")
+	}
+	return exam, nil
 }

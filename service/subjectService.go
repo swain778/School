@@ -21,7 +21,7 @@ func NewSubjectService() *SubjectService {
 
 func (s *SubjectService) CreateSubject(subject *models.Subject) (*models.Subject, error) {
 	err := s.db.Where(&models.Subject{
-		ClassID: subject.ClassID,
+
 		Subject: subject.Subject,
 	}).FirstOrCreate(&subject).Error
 

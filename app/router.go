@@ -56,14 +56,14 @@ func (ctn *Container) LoadRoutes() {
 		r.Get("/studentattendences", controller.GetsStudentAttendence)
 		r.Post("/studentattendence/{id}/update", controller.UpdateStudentAttendence)
 
-		r.Post("/studentsession", controller.CreateStudentSession)
-		r.Get("/studentsession/{id}/delete", controller.DeleteStudentSession)
-		r.Get("/studentsession/{id}", controller.GetStudentSession)
-		r.Get("/studentssessions", controller.GetsStudentSession)
-		r.Post("/studentsession/{id}/update", controller.UpdateStudentSession)
+		r.Post("/sessionyear", controller.CreateSessionYear)
+		r.Get("/sessionyear/{id}/delete", controller.DeleteSessionYear)
+		r.Get("/sessionyear/{id}", controller.GetSessionYear)
+		r.Get("/studentssessions", controller.GetsSessionYear)
+		r.Post("/sessionyear/{id}/update", controller.UpdateSessionYear)
 
 		r.Post("/subject", controller.AddSubject)
-		r.Get("/subject/{id}/delete", controller.DeleteStudent)
+		r.Get("/subject/{id}/delete", controller.DeleteSubject)
 		r.Get("/subject/{id}", controller.GetSubject)
 		r.Get("/subjects", controller.GetsSubject)
 		r.Post("/subject/{id}/update", controller.UpdateSubject)
@@ -82,9 +82,10 @@ func (ctn *Container) LoadRoutes() {
 
 		r.Post("/studentexam", controller.StudentExam)
 		r.Get("/studentexam/{id}/delete", controller.DeleteStudentExam)
-		r.Get("/studentexam/{id}", controller.StudentExam)
+		//r.Get("/studentexam/{id}", controller.StudentExam)
 		r.Get("/studentexams", controller.GetsStudentExam)
 		r.Post("/studentexam/{id}/update", controller.UpdateStudentExam)
+		r.Get("/studentexam/{id}", controller.GetStudentExamByID)
 
 		r.Post("/studentclass", controller.StudentClass)
 		r.Get("/studentclass/{id}/delete", controller.DeleteStudentClass)
@@ -96,6 +97,28 @@ func (ctn *Container) LoadRoutes() {
 
 		r.Post("/reset_password/{resetKey}", controller.ResetPassword)
 
-	})
+		r.Post("/staff", controller.CreateStaff)
+		r.Get("/staff/{id}/delete", controller.DeleteStaff)
+		r.Get("/staff/{staffType}", controller.GetStaff)
+		r.Get("/staff/{staffType}/{id}", controller.GetStaffByID)
 
+		r.Post("/BankDetail", controller.CreateBankDetail)
+		r.Get("/BankDetail/{id}/delete", controller.DeleteBankDetail)
+
+		r.Post("/salary", controller.CreateSalary)
+		r.Get("/salary/{id}/delete", controller.DeleteSalary)
+
+		r.Post("/homework", controller.CreateHomework)
+		r.Get("/homework/{id}/delete", controller.DeleteHomework)
+
+		r.Post("/studenthomework", controller.CreateHomework)
+		r.Get("/studenthomework/{id}/delete", controller.DeleteHomework)
+
+		r.Post("/guardian", controller.CreateGuardian)
+		r.Get("/guardian/{id}/delete", controller.DeleteGuardian)
+
+		// r.Post("/classsubject", controller.CreateClassSubject)
+		// r.Get("/classsubject/{id}/delete", controller.DeleteClassSubject)
+
+	})
 }

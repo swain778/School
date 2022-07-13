@@ -12,12 +12,12 @@ import (
 func StudentClass(w http.ResponseWriter, r *http.Request) {
 	a, _ := strconv.Atoi(r.FormValue("studentID"))
 	b, _ := strconv.Atoi(r.FormValue("classID"))
-	c, _ := strconv.Atoi(r.FormValue("studentsessionID"))
+	c, _ := strconv.Atoi(r.FormValue("SessionYearID"))
 	service := service.NewStudentClassService()
 	studentClass, err := service.CreateStudentClassService(&models.StudentClass{
-		StudentID:        uint(a),
-		ClassID:          uint(b),
-		StudentSessionID: uint(c),
+		StudentID:     uint(a),
+		ClassID:       uint(b),
+		SessionYearID: uint(c),
 	})
 	if err != nil {
 		ApiResponse(w, &Res{
@@ -98,13 +98,13 @@ func UpdateStudentClass(w http.ResponseWriter, r *http.Request) {
 	a, _ := strconv.Atoi(params["id"])
 	b, _ := strconv.Atoi(r.FormValue("studentID"))
 	c, _ := strconv.Atoi(r.FormValue("classID"))
-	d, _ := strconv.Atoi(r.FormValue("studentsessionID"))
+	d, _ := strconv.Atoi(r.FormValue("SessionYearID"))
 
 	studentClass, err := service.UpdateStudentClassService(&models.StudentClass{
-		ID:               uint(a),
-		StudentID:        uint(b),
-		ClassID:          uint(c),
-		StudentSessionID: uint(d),
+		ID:            uint(a),
+		StudentID:     uint(b),
+		ClassID:       uint(c),
+		SessionYearID: uint(d),
 	})
 	if err != nil {
 		ApiResponse(w, &Res{

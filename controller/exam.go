@@ -12,6 +12,7 @@ import (
 func CreateExam(w http.ResponseWriter, r *http.Request) {
 	a, _ := strconv.Atoi(r.FormValue("subjectID"))
 	b, _ := strconv.Atoi(r.FormValue("classID"))
+
 	service := service.NewExamService()
 	exam, err := service.CreateExam(&models.Exam{
 		SubjectID: uint(a),

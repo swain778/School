@@ -6,15 +6,14 @@ import (
 	"school/service"
 	"strconv"
 
+	"github.com/go-chi/chi"
 	"github.com/gorilla/mux"
 )
 
 func AddSubject(w http.ResponseWriter, r *http.Request) {
-	a, _ := strconv.Atoi(r.FormValue("classID"))
 	service := service.NewSubjectService()
 	subject, err := service.CreateSubject(&models.Subject{
 		Subject: r.FormValue("subject"),
-		ClassID: uint(a),
 	})
 	if err != nil {
 		ApiResponse(w, &Res{
@@ -69,14 +68,14 @@ func GetSubject(w http.ResponseWriter, r *http.Request) {
 
 func DeleteSubject(w http.ResponseWriter, r *http.Request) {
 	service := service.NewSubjectService()
-	params := mux.Vars(r)
-	subject, err := service.DeleteSubject(params["id"])
+	subject, err := service.DeleteSubject(chi.URLParam(r, "id"))
 	if err != nil {
 		ApiResponse(w, &Res{
 			Code:    900,
 			Message: "error",
 			Data:    err.Error(),
 		})
+		return
 	}
 	ApiResponse(w, &Res{
 		Code:    200,
@@ -89,10 +88,8 @@ func UpdateSubject(w http.ResponseWriter, r *http.Request) {
 	service := service.NewSubjectService()
 	params := mux.Vars(r)
 	a, _ := strconv.Atoi(params["id"])
-	b, _ := strconv.Atoi(r.FormValue("classID"))
 	subject, err := service.UpdateSubject(&models.Subject{
 		ID:      uint(a),
-		ClassID: uint(b),
 		Subject: r.FormValue("subject"),
 	})
 	if err != nil {

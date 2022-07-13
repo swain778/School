@@ -21,9 +21,9 @@ func NewStudentClassService() *StudentClassService {
 
 func (s *StudentClassService) CreateStudentClassService(studentClass *models.StudentClass) (*models.StudentClass, error) {
 	err := s.db.Where(models.StudentClass{
-		StudentID:        studentClass.StudentID,
-		ClassID:          studentClass.ClassID,
-		StudentSessionID: studentClass.StudentSessionID,
+		StudentID:     studentClass.StudentID,
+		ClassID:       studentClass.ClassID,
+		SessionYearID: studentClass.SessionYearID,
 	}).FirstOrCreate(&studentClass).Error
 	if err != nil {
 		return nil, errors.New("can't create student service")

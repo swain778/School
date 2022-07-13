@@ -20,6 +20,7 @@ type Student struct {
 	Complain          []Complain
 	StudentExam       []StudentExam
 	Fees              []Fees
+	Homework          []Homework
 	CreatedAt         time.Time `gorm:"autoUpdate"`
 	UpdatedAt         time.Time `gorm:"autoUpdate"`
 }

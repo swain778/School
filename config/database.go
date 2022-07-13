@@ -26,7 +26,7 @@ func MigrateDB(db *gorm.DB) {
 		&models.Exam{},
 		&models.Fees{},
 		&models.StudentAttendence{},
-		&models.StudentSession{},
+		&models.SessionYear{},
 		&models.Student{},
 		&models.Subject{},
 		&models.TeacherAttendence{},
@@ -39,8 +39,43 @@ func MigrateDB(db *gorm.DB) {
 		&models.ResetPassword{},
 		&models.User{},
 		&models.Login{},
+		&models.Staff{},
+		&models.Salary{},
+		&models.BankDetail{},
+		&models.StudentHomework{},
+		&models.Guardian{},
+		&models.Homework{},
 	)
 	if err != nil {
 		fmt.Println(err.Error())
 	}
 }
+
+// func DummyData(db *gorm.DB) {
+
+// 	db.Create(&[]models.Class{
+// 		{
+// 			ID:    22,
+// 			Class: "5",
+// 			Subject: []models.Subject{
+// 				{
+// 					ID:      50,
+// 					Subject: "Hindi",
+// 					ClassID: 22,
+// 				},
+// 			},
+// 		},
+// 		{
+// 			ID:    23,
+// 			Class: "5",
+// 			Subject: []models.Subject{
+// 				{
+// 					ID:      51,
+// 					Subject: "Hindi",
+// 					ClassID: 23,
+// 				},
+// 			},
+// 		},
+// 	})
+
+// }
